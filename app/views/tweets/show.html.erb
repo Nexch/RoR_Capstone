@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tweet:</strong>
+  <%= @tweet.tweet %>
+  <%= @tweet.user_id %>
+
+</p>
+
+
+    <%= form_with model: @friendship, url: follows_path do |f| %>
+    <div class="field">
+      <%= f.label :friend_id %><br />
+      <%= f.hidden_field :friend_id, :value => @tweet.user_id %>
+      <%= f.submit 'friends!' %>
+    </div>
+    <% end %>
+
+
+<%= link_to 'Edit', edit_tweet_path(@tweet) %> |
+<%= link_to 'Back', tweets_path %>
