@@ -1,3 +1,75 @@
+
+<html>
+  <head>
+
+  <div class="d-flex flex-wrap ">
+    <div class="card" style="width: 18rem;">
+      <div class="d-flex align-items-center justify-content-around">
+      <img src="https://static.comicvine.com/uploads/original/11111/111113706/5508193-7637959662-40788.jpg" class="card-img-top rounded-circle " alt="..." style="width: 5rem; height: 5rem;">
+      <h5 class="card-title"><%= current_user.name%></h5>
+      </div>
+      <div class=" d-flex align-items-baseline justify-content-around">
+        <div class="card-body">
+          <p> Follows <p>
+          <p class="card-text"><%= current_user.follows.count%></p>
+        </div>
+        <div>
+          <p> Follower<p>
+          <p> <% lol = Follow.all%>
+              <% count = 0 %>
+              <% lol.each do |meme|%>
+                <% if meme.friend_id == current_user.id%>
+                  <% count += 1%>
+                <% end %>
+              <% end %>
+              <%= count %>
+          </p>
+        </div>
+      </div>
+        <div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><a href="#" class="card-link">Card link</a></li>
+              <li class="list-group-item"><a href="#" class="card-link">Card link</a></li>
+              <li class="list-group-item"><a href="#" class="card-link">Card link</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+
+    <div class="d-flex flex-column flex-fill">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary m-0">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+  <div class="d-flex justify-content-between">
+  <div>
 <p id="notice"><%= notice %></p>
 
 <h1>Tweets</h1>
@@ -27,4 +99,27 @@
 <%= link_to 'New Tweet', new_tweet_path %>
 <%= link_to 'User page', user_path(current_user) %>
 <%= button_to "logout", destroy_user_session_path, method: :delete  %>
-<%= link_to "delete", user_registration_path, method: :delete, data: { confirm: "You sure?" } %>
+<%= link_to "delete", user_registration_path, method: :delete, data: { confirm: "You sure?" } %></div>
+    <div class="card" style="width: 18rem;">
+      <img src="https://static.comicvine.com/uploads/original/11111/111113706/5508193-7637959662-40788.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+</html>
