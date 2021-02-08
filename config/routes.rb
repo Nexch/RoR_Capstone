@@ -5,4 +5,9 @@ Rails.application.routes.draw do
   root "tweets#index"
   resources :users, only: [:index, :show]
   resources :follows, only: [:new, :create, :update, :destroy, :index]
+  resources :tweets do
+    member do
+      put "like", to: "tweets#like"
+    end
+  end
 end

@@ -1,8 +1,17 @@
 class TweetsController < ApplicationController
+  
   before_action :set_tweet, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
 
   # GET /tweets or /tweets.json
+
+  def like
+    @lol = Tweet.find(params[:id]) 
+    @lol.liked_by current_user
+    redirect_to :root
+  end
+
+
   def index
     @tweets = Tweet.all
     @user = User.all
@@ -68,4 +77,7 @@ class TweetsController < ApplicationController
     def tweet_params
       params.require(:tweet).permit(:tweet)
     end
+
+
+
 end
