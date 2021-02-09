@@ -1,24 +1,62 @@
-# README
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Capstone project
 
-Things you may want to cover:
+The project is based on twitter with a few modifications
 
-* Ruby version
+## Built With
+- Ruby
+- Ruby on rails
+- Postgres
 
-* System dependencies
+## Pre-requisites
+- Ruby 3.0.0
+- Rails gem
+- Bundle
+- Progres
 
-* Configuration
+### Setup
 
-* Database creation
+-Open your terminal and go to the directory where you want to clone the repo.
 
-* Database initialization
+-Clone the repository to your local machine. 
+```
+-Go to the root directory. 
+```
+-Install the necessary gems to run the project. 
+```
 
-* How to run the test suite
+- Also please run this command to run all the migration for the database and have all tables updated and read to use 
+rails db:create && rails db:migrate
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+-Now your environment is ready to run the project
 
-* Deployment instructions
+## Author
 
-* ...
+👤 **Mauricio Tabilo**
+
+- Github: [@Nexch](https://github.com/Nexch)
+- Twitter: [@@MfinchT](https://twitter.com/MfinchT)
+- Linkedin: [linkedin](https://www.linkedin.com/in/Nexch)
+
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- The Odin Project
+- Rails guides
+- Microverse
+
+## 📝 License
+
+This project is [MIT](lic.url) licensed.

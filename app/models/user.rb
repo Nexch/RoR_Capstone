@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :tweets
   has_many :follows, dependent: :delete_all
-  has_many :followers, class_name: "Follow"
+  has_many :followers, class_name: 'Follow'
   acts_as_voter
 end

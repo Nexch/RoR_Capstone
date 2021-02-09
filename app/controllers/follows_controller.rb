@@ -44,5 +44,4 @@ class FollowsController < ApplicationController
   def params_friendship
     params.require(:follow).permit(:friend_id)
   end
-
 end

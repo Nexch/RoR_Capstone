@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users
   resources :tweets
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root "tweets#index"
-  resources :users, only: [:index, :show]
-  resources :follows, only: [:new, :create, :update, :destroy, :index]
+  root 'tweets#index'
+  resources :users, only: %i[index show]
+  resources :follows, only: %i[new create update destroy index]
   resources :tweets do
     member do
-      put "like", to: "tweets#like"
+      put 'like', to: 'tweets#like'
     end
   end
 end
