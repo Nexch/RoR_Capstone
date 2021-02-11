@@ -47,11 +47,15 @@
 
           <h1><%= User.find(params[:id]).name%>Tweets</h1>
           <div class="">
-            <%= form_with model: @friendship, url: follows_path do |f| %>
-              <div class="field">
-                <%= f.hidden_field :friend_id, :value => params[:id] %>
-                <%= f.submit 'Follow' %>
-              </div>
+            <% if Follow.where(user_id: current_user, friend_id: params[:id]) == [] %>
+              <%= form_with model: @friendship, url: follows_path do |f| %>
+                <div class="field">
+                  <%= f.hidden_field :friend_id, :value => params[:id] %>
+                  <%= f.submit 'Follow' %>
+                </div>
+              <% end %>
+            <% else %>
+               <h5><%= link_to "Unfollow", follow_path, method: :delete %></h5>
             <% end %>
           </div>
 

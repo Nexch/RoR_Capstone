@@ -1,4 +1,5 @@
-  <div class="d-flex flex-wrap" style="height: 100vh;">
+<%= stylesheet_link_tag "stylesheets/tweets.scss" %>
+  <div class="d-flex flex-wrap lol">
     <div class=" bg-dark  text-white p-2" style="width: 18rem;">
       <div class="d-flex align-items-center justify-content-around ">
       <img src="https://static.comicvine.com/uploads/original/11111/111113706/5508193-7637959662-40788.jpg" class="card-img-top rounded-circle " alt="..." style="width: 5rem; height: 5rem;">
@@ -101,7 +102,7 @@
             <% list.push(lols.friend_id) %>
           <% end %>
           <% @user.each do |tweet| %>
-            <% if list.exclude?(tweet.id)%>
+            <% if list.exclude?(tweet.id) && tweet.id != current_user.id %>
               <tr>
                 <td><%= tweet.name %></td>
                 <td><%= link_to 'Show', tweet %></td><br>

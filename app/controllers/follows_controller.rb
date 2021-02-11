@@ -28,8 +28,8 @@ class FollowsController < ApplicationController
   end
 
   def destroy
-    friend = User.find(params[:id])
-    friendship = friend.follows.find_by(friend_id: current_user.id)
+    friend = User.find(current_user.id)
+    friendship = friend.follows.find_by(friend_id: params[:id])
 
     flash[:notice] = if friendship.destroy
                        'Friendship was rejected.'
