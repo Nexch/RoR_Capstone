@@ -16,8 +16,6 @@
  *= require_self
  */
 
-@import 'bootstrap/dist/css/bootstrap';
-
 body {
   margin: 0;
   padding: 0;
