@@ -1,8 +1,7 @@
-<%= stylesheet_link_tag "stylesheets/tweets.scss" %>
   <div class="d-flex flex-wrap lol">
-    <div class=" bg-dark  text-white p-2" style="width: 18rem;">
+    <div class=" bg-dark  text-white p-2 width-18rem">
       <div class="d-flex align-items-center justify-content-around ">
-      <img src="https://static.comicvine.com/uploads/original/11111/111113706/5508193-7637959662-40788.jpg" class="card-img-top rounded-circle " alt="..." style="width: 5rem; height: 5rem;">
+      <img src="https://static.comicvine.com/uploads/original/11111/111113706/5508193-7637959662-40788.jpg" class="card-img-top rounded-circle img5-5" alt="...">
       <h5 class="card-title"><%= current_user.name%></h5>
       </div>
       <div class=" d-flex align-items-baseline justify-content-around">
@@ -12,23 +11,17 @@
         </div>
         <div class="mr-5">
           <p> Follower<p>
-          <p> <% lol = Follow.all%>
-              <% count = 0 %>
-              <% lol.each do |meme|%>
-                <% if meme.friend_id == current_user.id%>
-                  <% count += 1%>
-                <% end %>
-              <% end %>
-              <%= count %>
+          <p> <% lol = Follow.all.where(friend_id: 1).count%>
+              <%= lol %>
           </p>
         </div>
       </div>
         <div class="">
             <ul class="list-group list-group-flush">
-              <li class="list-group-item bg-dark"><%= link_to 'New Tweet', new_tweet_path %></li>
-              <li class="list-group-item bg-dark"><%= link_to 'User page', user_path(current_user) %></li>
-              <li class="list-group-item bg-dark"><%= link_to "logout", destroy_user_session_path, method: :delete  %></li>
-              <li class="list-group-item bg-dark"><%= link_to "delete", user_registration_path, method: :delete, data: { confirm: "You sure?" } %></li>
+              <li class="list-group-item bg-dark text-primary"><%= link_to 'New Tweet', new_tweet_path, class: "text-primary" %></li>
+              <li class="list-group-item bg-dark text-primary"><%= link_to 'User page', user_path(current_user), class: "text-primary"  %></li>
+              <li class="list-group-item bg-dark text-primary"><%= link_to "logout", destroy_user_session_path, method: :delete, class: "text-primary"  %></li>
+              <li class="list-group-item bg-dark text-primary"><%= link_to "delete", user_registration_path, method: :delete, data: { confirm: "You sure?" }, class: "text-primary"%></li>
 
             </ul>
 
@@ -38,35 +31,21 @@
 
     <div class="d-flex flex-column flex-fill">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary m-0">
-        <a class="navbar-brand" href="/"><img src="https://i.pinimg.com/736x/0a/c8/e8/0ac8e8ab266076f9d654e8387ba5a993.jpg" class="rounded-circle " alt="..." style="width: 2.5rem; height: 2.5rem;">
+        <a class="navbar-brand" href="/"><img src="https://i.pinimg.com/736x/0a/c8/e8/0ac8e8ab266076f9d654e8387ba5a993.jpg" class="rounded-circle img2_5" alt="...">
  </a>
       </nav>
   <div class="d-flex justify-content-between bg-secondary" style="height: 99vh;">
     <div class="d-flex flex-column w-100  bg-light">
     <div class="d-md-none d-xl-block d-lg-none">
-      <img src="https://news-cdn.softpedia.com/images/news2/did-you-know-the-windows-xp-wallpaper-was-so-expensive-fedex-refused-to-ship-it-520483-2.jpg" class="" alt="..." style="height: 20rem; min-width:100%;">
+      <img src="https://news-cdn.softpedia.com/images/news2/did-you-know-the-windows-xp-wallpaper-was-so-expensive-fedex-refused-to-ship-it-520483-2.jpg" class="height20" alt="...">
     </div>
-  <div  class="" style="width: 20rem; word-wrap: break-word; ">
+  <div  class="div1">
 <p id="notice"><%= notice %></p>
 
 <h1 class="ml-5" >Tweets</h1>
 
-<table class="text-wrap ml-5 mr-5"style="width: 35rem; word-wrap: break-word; ">
+<table class="text-wrap ml-5 mr-5 div2" >
   <thead>
-
-    <style>
-      table {
-        border-collapse: collapse;
-        table-layout: fixed;
-        width: 310px;
-      }
-      table td {
-        border-bottom: solid 1px #666;
-        width: 20rem;
-        word-wrap: break-word;
-      }
-    </style>
-
     <tr>
       <th class="">User</th>
       <th> Tweets </th>
@@ -78,10 +57,9 @@
     <% @tweets.each do |tweet| %>
       <tr>
         <td><%= tweet.user.name %></td>
-        <td class="flex-wrap" style="width: 20rem; "><%= tweet.tweet %></td>
+        <td class="flex-wrap width-20rem"><%= tweet.tweet %></td>
         <td> <%= tweet.get_likes.size %> </td>
-        <td><%= link_to 'Show', tweet %></td>
-        <td> <%= link_to like_tweet_path(tweet), method: :put do %>
+        <td> <%= link_to like_tweet_path(tweet), class: "text-primary", method: :puti do %>
                like
              <% end %> 
              <br>
@@ -94,7 +72,7 @@
 <br>
 
 </div>
-    <div class="border-left border-dark p-5 bg-dark text-white" style="width: 18rem;">
+    <div class="border-left border-dark p-5 bg-dark text-white width-18rem">
         <h5>Who to follow</h5>
           <% list = Array.new%>
           <% lol = current_user.follows%>
@@ -102,12 +80,10 @@
             <% list.push(lols.friend_id) %>
           <% end %>
           <% @user.each do |tweet| %>
-            <% if list.exclude?(tweet.id) && tweet.id != current_user.id %>
-              <tr>
-                <td><%= tweet.name %></td>
-                <td><%= link_to 'Show', tweet %></td><br>
-              </tr>
-            <% end %>
+            <tr>
+              <%= if_list(tweet, list) %>
+              <br>
+            </tr>
           <% end %>
 
     </div>
