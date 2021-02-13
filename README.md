@@ -1,42 +1,59 @@
-![](https://img.shields.io/badge/Microverse-blueviolet)
+# Ruby on Rails Capstone Project: Redesign of Twitter
 
-# Capstone project
+> In this project I built a page  based on a redesign of Twitter.  
 
-The project is based on twitter with a few modifications
 
-## Live link
 
-[Live link](https://rorcapstonetwitter.herokuapp.com/users/sign_in)
+![screenshot](./)
 
 ## Built With
-- Ruby
-- Ruby on rails
-- Postgres
 
-## Pre-requisites
-- Ruby 3.0.0
-- Rails gem
-- Bundle
-- Progres
+- Ruby 
+- Ruby on Rails 
+- RSpec
+- Bootstrap 
+
+## Live Demo
+
+[Live Demo](https://rorcapstonetwitter.herokuapp.com)
+
+
+## Getting Started
+
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+Ruby
+Rails
+Postgres
 
 ### Setup
 
--Open your terminal and go to the directory where you want to clone the repo.
+$ git clone the repo
+   Install gems with:
+      bundle install
+  Setup database with:
+      rails db:create
+      rails db:migrate
 
--Clone the repository to your local machine. 
+### Usage
+
+Start server with:
+
 ```
--Go to the root directory. 
-```
--Install the necessary gems to run the project. 
+    rails server
 ```
 
-- Also please run this command to run all the migration for the database and have all tables updated and read to use 
-rails db:create && rails db:migrate
+Open `http://localhost:3000/` in your browser.
+
+### Run tests
+
+```
+    rpsec 
 ```
 
--Now your environment is ready to run the project
-
-## Author
+# Authors
 
 👤 **Mauricio Tabilo**
 
@@ -49,7 +66,7 @@ rails db:create && rails db:migrate
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com).
+Feel free to check the [issues page](issues/).
 
 ## Show your support
 
@@ -57,10 +74,5 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- The Odin Project
-- Rails guides
 - Microverse
-
-## 📝 License
-
-This project is [MIT](lic.url) licensed.
+- Design idea by [Gregoire Vella on Behance](https://www.behance.net/gregoirevella)  |  [Behance Design](https://www.behance.net/gallery/14286087/Twitter-Redesign-of-UI-details)
