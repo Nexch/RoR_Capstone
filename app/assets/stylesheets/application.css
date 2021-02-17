@@ -23,7 +23,6 @@ body {
 
 .lol {
   height: 100vh;
-  background-color: red;
 }
 
 .width-18rem {
@@ -69,4 +68,9 @@ table td {
   border-bottom: solid 1px #666;
   width: 20rem;
   word-wrap: break-word;
+}
+
+.form-box {
+  padding: 10rem;
+  background: blue;
 }

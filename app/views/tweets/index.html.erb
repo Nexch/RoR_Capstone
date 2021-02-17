@@ -11,14 +11,14 @@
         </div>
         <div class="mr-5">
           <p> Follower<p>
-          <p> <% lol = Follow.all.where(friend_id: 1).count%>
+          <p> <% lol = Follow.all.where(friend_id: current_user.id).count%>
               <%= lol %>
           </p>
         </div>
       </div>
         <div class="">
             <ul class="list-group list-group-flush">
-              <li class="list-group-item bg-dark text-primary"><%= link_to 'New Tweet', new_tweet_path, class: "text-primary" %></li>
+              <li class="list-group-item bg-dark text-primary"><%= link_to 'Home', root_path, class: "text-primary" %></li>
               <li class="list-group-item bg-dark text-primary"><%= link_to 'User page', user_path(current_user), class: "text-primary"  %></li>
               <li class="list-group-item bg-dark text-primary"><%= link_to "logout", destroy_user_session_path, method: :delete, class: "text-primary"  %></li>
               <li class="list-group-item bg-dark text-primary"><%= link_to "delete", user_registration_path, method: :delete, data: { confirm: "You sure?" }, class: "text-primary"%></li>
@@ -43,7 +43,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1 class="ml-5" >Tweets</h1>
-
+  <div class="ml-5">
+    <%= render 'form', tweet: current_user.tweets.build %>
+  </div>
 <table class="text-wrap ml-5 mr-5 div2" >
   <thead>
     <tr>
@@ -59,7 +61,7 @@
         <td><%= tweet.user.name %></td>
         <td class="flex-wrap width-20rem"><%= tweet.tweet %></td>
         <td> <%= tweet.get_likes.size %> </td>
-        <td> <%= link_to like_tweet_path(tweet), class: "text-primary", method: :puti do %>
+        <td> <%= link_to like_tweet_path(tweet), class: "text-primary", method: :put do %>
                like
              <% end %> 
              <br>

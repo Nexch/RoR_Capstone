@@ -1,8 +1,7 @@
-
-  <div class="d-flex flex-wrap" style="height: 100vh;">
-    <div class=" bg-dark  text-white p-2" style="width: 18rem;">
+  <div class="d-flex flex-wrap lol">
+    <div class=" bg-dark  text-white p-2 width-18rem">
       <div class="d-flex align-items-center justify-content-around ">
-      <img src="https://static.comicvine.com/uploads/original/11111/111113706/5508193-7637959662-40788.jpg" class="card-img-top rounded-circle " alt="..." style="width: 5rem; height: 5rem;">
+      <img src="https://static.comicvine.com/uploads/original/11111/111113706/5508193-7637959662-40788.jpg" class="card-img-top rounded-circle img5-5" alt="...">
       <h5 class="card-title"><%= current_user.name%></h5>
       </div>
       <div class=" d-flex align-items-baseline justify-content-around">
@@ -12,23 +11,17 @@
         </div>
         <div class="mr-5">
           <p> Follower<p>
-          <p> <% lol = Follow.all%>
-              <% count = 0 %>
-              <% lol.each do |meme|%>
-                <% if meme.friend_id == current_user.id%>
-                  <% count += 1%>
-                <% end %>
-              <% end %>
-              <%= count %>
+          <p> <% lol = Follow.all.where(friend_id: current_user.id).count%>
+              <%= lol %>
           </p>
         </div>
       </div>
         <div class="">
             <ul class="list-group list-group-flush">
-              <li class="list-group-item bg-dark"><%= link_to 'New Tweet', new_tweet_path %></li>
-              <li class="list-group-item bg-dark"><%= link_to 'User page', user_path(current_user) %></li>
-              <li class="list-group-item bg-dark"><%= link_to "logout", destroy_user_session_path, method: :delete  %></li>
-              <li class="list-group-item bg-dark"><%= link_to "delete", user_registration_path, method: :delete, data: { confirm: "You sure?" } %></li>
+              <li class="list-group-item bg-dark text-primary"><%= link_to 'Home', root_path, class: "text-primary" %></li>
+              <li class="list-group-item bg-dark text-primary"><%= link_to 'User page', user_path(current_user), class: "text-primary"  %></li>
+              <li class="list-group-item bg-dark text-primary"><%= link_to "logout", destroy_user_session_path, method: :delete, class: "text-primary"  %></li>
+              <li class="list-group-item bg-dark text-primary"><%= link_to "delete", user_registration_path, method: :delete, data: { confirm: "You sure?" }, class: "text-primary"%></li>
 
             </ul>
 
@@ -38,62 +31,109 @@
 
     <div class="d-flex flex-column flex-fill">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary m-0">
-        <a class="navbar-brand" href="/"><img src="https://i.pinimg.com/736x/0a/c8/e8/0ac8e8ab266076f9d654e8387ba5a993.jpg" class="rounded-circle " alt="..." style="width: 2rem; height: 2rem;">
+        <a class="navbar-brand" href="/"><img src="https://i.pinimg.com/736x/0a/c8/e8/0ac8e8ab266076f9d654e8387ba5a993.jpg" class="rounded-circle img2_5" alt="...">
  </a>
       </nav>
-      <div class="d-flex justify-content-between" >
-        <div class="d-flex flex-column" style="width: 100%;">
-          <p id="notice"><%= notice %></p>
+  <div class="d-flex justify-content-between bg-secondary" style="height: 99vh;">
+    <div class="d-flex flex-column w-100  bg-light">
+    <div class="d-md-none d-xl-block d-lg-none">
+      <img src="https://news-cdn.softpedia.com/images/news2/did-you-know-the-windows-xp-wallpaper-was-so-expensive-fedex-refused-to-ship-it-520483-2.jpg" class="height20" alt="...">
+    </div>
+  <div  class="div1">
+<p id="notice"><%= notice %></p>
 
-          <h1><%= User.find(params[:id]).name%>Tweets</h1>
-          <div class="">
-            <% if Follow.where(user_id: current_user, friend_id: params[:id]) == [] %>
-              <%= form_with model: @friendship, url: follows_path do |f| %>
-                <div class="field">
-                  <%= f.hidden_field :friend_id, :value => params[:id] %>
-                  <%= f.submit 'Follow' %>
-                </div>
-              <% end %>
-            <% else %>
-               <h5><%= link_to "Unfollow", follow_path, method: :delete %></h5>
-            <% end %>
-          </div>
-
-<table class="text-wrap ml-5 mr-5"style=" word-wrap: break-word; ">
+<h1 class="ml-5" >Tweets</h1>
+  <div class="ml-5">
+    <%= %>
+  </div>
+<table class="text-wrap ml-5 mr-5 div2" >
   <thead>
-
-    <style>
-      table {
-        border-collapse: collapse;
-        table-layout: fixed;
-        width: 310px;
-      }
-      table td {
-        border-bottom: solid 1px #666;
-        width: 20rem;
-        word-wrap: break-word;
-        margin-bottom: 50px;
-      }
-    </style>
-
+    <tr>
+      <th class="">User</th>
+      <th> Tweets </th>
+      <th colspan="3"></th>
+    </tr>
   </thead>
 
   <tbody>
-  <% lol = Tweet.all  %>
-  <tr class="d-flex flex-column">
-  <% lol.each do |meme| %>
-    <% if meme.user_id.to_i == params[:id].to_i%>
-      <td><%= meme.tweet %> </td><br>
+    <% current_user.tweets.each do |tweet|%>
+      <tr>
+        <td> <%= tweet.tweet %> </td>
+        <td> </td>
+        <td>  </td>
+        <td>
+             <br>
+        </td>
+      </tr>
     <% end %>
-  <% end %>
-  </tr>
   </tbody>
 </table>
-
-
-
-
+</div>
+<br>
 
 </div>
-      </div>
+    <div class="border-left border-dark p-5 bg-dark text-white width-18rem">
+        <div class="d-flex align-items-center justify-content-around">
+          <% if Follow.where(user_id: current_user, friend_id: params[:id]) == [] %>
+            <%= form_with model: @friendship, url: follows_path do |f| %>
+              <div class="field">
+                <%= f.hidden_field :friend_id, :value => params[:id] %>
+                <%= f.submit 'Follow' %>
+              </div>
+            <% end %>
+          <% else %>
+            <h5><%= link_to "Unfollow", follow_path, method: :delete %></h5>
+          <% end %>
+        </div>
+
+          <% list = Array.new%>
+          <% lol = current_user.follows %>
+          <% lol.each do |lols| %>
+            <% list.push(lols.friend_id) %>
+          <% end %>
+
+          <div class="d-flex align-items-center justify-content-around ">
+            <img src="https://static.comicvine.com/uploads/original/11111/111113706/5508193-7637959662-40788.jpg" class="card-img-top rounded-circle img5-5" alt="...">
+          </div>
+
+          <div class="d-flex flex-column align-items-center ">
+            <h2><%= User.find(params[:id]).name %></h2>
+            <p><%= User.find(params[:id]).email %></p>
+          </div>
+          <div class="d-flex justify-content-around">
+            <div class="">
+              <p>
+                <%= Follow.all.where(friend_id: params[:id]).count %>
+              </p>
+              <p>
+                Follow
+              </p>
+            </div>
+
+            <div class="">
+              <p>
+                <%= Follow.all.where(user_id: params[:id]).count %>
+              </p>
+              <p>
+                Follwers
+              </p>
+            </div>
+
+            <div class="">
+              <p>
+                <%= current_user.tweets.count %>
+              </p>
+              <p>
+                tweets
+              </p>
+            </div>
+          </div>
+
     </div>
+  </div>
+</div>
+</div>
+
+
+
+</html>

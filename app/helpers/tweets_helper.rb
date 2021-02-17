@@ -1,6 +1,8 @@
 module TweetsHelper
   def if_list(tweet, list)
-    return if list.exclude?(tweet.id) && tweet.id != current_user.id
+    return unless tweet.id != current_user.id
+
+    return unless list.exclude?(tweet.id)
 
     content_tag(:td) do
       concat link_to(tweet.name, tweet, class: 'text-primary')
