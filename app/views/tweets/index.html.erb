@@ -56,7 +56,7 @@
   </thead>
 
   <tbody>
-    <% @tweets.each do |tweet| %>
+    <% @tweets.includes(:user).each do |tweet| %>
       <tr>
         <td><%= tweet.user.name %></td>
         <td class="flex-wrap width-20rem"><%= tweet.tweet %></td>
