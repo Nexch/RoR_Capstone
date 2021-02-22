@@ -49,12 +49,11 @@ body {
 }
 
 .div1 {
-  width: 20rem;
   word-wrap: break-word;
 }
 
 .div2 {
-  width: 35rem;
+  width: 60vw;
   word-wrap: break-word;
 }
 
@@ -74,3 +73,30 @@ table td {
   padding: 10rem;
   background: blue;
 }
+
+.bg_1 {
+  background: #51A5E5
+}
+
+.bg_2 {
+  background: #213246
+}
+
+input {
+  width: 100%;
+}
+
+.tweet {
+  
+}
+
+tbody {
+  width: 50vw;
+}
+
+input[type="image"]
+{
+  width: 50px;
+  height: 50px;
+}
+

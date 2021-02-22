@@ -10,6 +10,12 @@ class TweetsController < ApplicationController
     redirect_to :root
   end
 
+  def dislike
+    @lol = Tweet.find(params[:id])
+    @lol.unliked_by current_user
+    redirect_to :root
+  end
+
   def index
     @tweets = Tweet.all
     @user = User.all

@@ -4,7 +4,7 @@
 
 
 
-![screenshot](./)
+![screenshot](./app/assets/images/pic_1)
 
 ## Built With
 
