@@ -75,27 +75,22 @@ table td {
 }
 
 .bg_1 {
-  background: #51A5E5
+  background: #51a5e5;
 }
 
 .bg_2 {
-  background: #213246
+  background: #213246;
 }
 
 input {
   width: 100%;
 }
 
-.tweet {
-  
-}
-
 tbody {
   width: 50vw;
 }
 
-input[type="image"]
-{
+input[type="image"] {
   width: 50px;
   height: 50px;
 }
