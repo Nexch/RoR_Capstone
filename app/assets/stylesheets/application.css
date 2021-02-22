@@ -100,3 +100,6 @@ input[type="image"]
   height: 50px;
 }
 
+input[id=user_email] {
+  width: 40rem;
+}
