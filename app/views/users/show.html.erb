@@ -65,17 +65,8 @@
 </div>
     <div class="border-left border-dark p-5 bg_2 text-white width-18rem">
         <div class="d-flex align-items-center justify-content-around">
-          <% if Follow.where(user_id: current_user, friend_id: params[:id]) == [] %>
-            <%= form_with model: @friendship, url: follows_path do |f| %>
-              <div class="field">
-                <%= f.hidden_field :friend_id, :value => params[:id] %>
-                <%= f.submit 'Follow', :type => :image, :src => "https://cdn2.iconfinder.com/data/icons/everything-but-the-kitchen-sink-2/100/common-06-512.png" %>
-              </div>
-            <% end %>
-          <% else %>
-            <h5><%= link_to "Unfollow", follow_path, method: :delete %></h5>
-          <% end %>
-        </div>
+          <%= user_follow%>
+       </div>
 
           <% list = Array.new%>
           <% lol = current_user.follows %>
@@ -97,7 +88,7 @@
                 <%= Follow.all.where(friend_id: params[:id]).count %>
               </p>
               <p>
-                Follow
+                Followers
               </p>
             </div>
 
@@ -106,7 +97,7 @@
                 <%= Follow.all.where(user_id: params[:id]).count %>
               </p>
               <p>
-                Follwers
+                Follow
               </p>
             </div>
 

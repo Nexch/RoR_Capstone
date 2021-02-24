@@ -54,18 +54,8 @@
         <div class="d-flex">
           <td class="flex-wrap width-20rem "> <p class="w-75 text-break"><%= tweet.tweet %></p> <p class="mx-5"> <%= tweet.get_likes.size %></p> </td>
           <td> 
-            <% if tweet.find_votes_for(:voter_id => current_user.id ).size > 0 %>
-              <%= link_to dislike_tweet_path(tweet), class: "text-primary", method: :put do %>
-                 dislike
-              <% end %>
-              <br>              
-            <% else %>
-               <%= link_to like_tweet_path(tweet), class: "text-primary", method: :put do %>
-                 like
-              <% end %> 
-              <br>
-             
-            <% end %>
+            <%= if_voter(tweet) %>
+            <br>
         </td>
         </div>
       </tr>
