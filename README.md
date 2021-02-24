@@ -72,7 +72,7 @@ Feel free to check the [issues page](https://github.com/Nexch/RoR_Capstone/issue
 
 Give a ⭐️ if you like this project!
 
-## Acknowledgments
+## Acknowledgment
 
 - Microverse
 - Design idea by [Gregoire Vella on Behance](https://www.behance.net/gregoirevella)  |  [Behance Design](https://www.behance.net/gallery/14286087/Twitter-Redesign-of-UI-details)
