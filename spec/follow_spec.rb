@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'follow', type: :feature do
   scenario 'user page' do
     visit new_user_registration_path
-    fill_in 'Name', with: 'Nata'
-    fill_in 'Email', with: 'nata@nata'
+    fill_in 'Name', with: 'lol1'
+    fill_in 'Email', with: 'lol@lol.com'
     fill_in 'Password', with: 'natanata'
     fill_in 'Password confirmation', with: 'natanata'
     click_on 'Sign up'
@@ -15,12 +15,21 @@ RSpec.describe 'follow', type: :feature do
 
   scenario 'no requests' do
     visit new_user_registration_path
+    fill_in 'Name', with: 'lol1'
+    fill_in 'Email', with: 'lol@lol.com'
+    fill_in 'Password', with: 'natanata'
+    fill_in 'Password confirmation', with: 'natanata'
+    click_on 'Sign up'
+    click_on 'logout'
+
+
+    visit new_user_registration_path
     fill_in 'Name', with: 'Nata'
     fill_in 'Email', with: 'nata@nata'
     fill_in 'Password', with: 'natanata'
     fill_in 'Password confirmation', with: 'natanata'
     click_on 'Sign up'
-    click_on 'User page'
+    click_on 'lol1'
     sleep 1
     find("input[name='commit']").click
     sleep 1
@@ -28,13 +37,22 @@ RSpec.describe 'follow', type: :feature do
   end
 
   scenario 'no requests' do
+
+    visit new_user_registration_path
+    fill_in 'Name', with: 'lol1'
+    fill_in 'Email', with: 'lol@lol.com'
+    fill_in 'Password', with: 'natanata'
+    fill_in 'Password confirmation', with: 'natanata'
+    click_on 'Sign up'
+    click_on 'logout'
+
     visit new_user_registration_path
     fill_in 'Name', with: 'Nata'
     fill_in 'Email', with: 'nata@nata'
     fill_in 'Password', with: 'natanata'
     fill_in 'Password confirmation', with: 'natanata'
     click_on 'Sign up'
-    click_on 'User page'
+    click_on 'lol1'
     sleep 1
     find("input[name='commit']").click
     sleep 1
