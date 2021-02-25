@@ -22,7 +22,6 @@ RSpec.describe 'follow', type: :feature do
     click_on 'Sign up'
     click_on 'logout'
 
-
     visit new_user_registration_path
     fill_in 'Name', with: 'Nata'
     fill_in 'Email', with: 'nata@nata'
@@ -37,7 +36,6 @@ RSpec.describe 'follow', type: :feature do
   end
 
   scenario 'no requests' do
-
     visit new_user_registration_path
     fill_in 'Name', with: 'lol1'
     fill_in 'Email', with: 'lol@lol.com'
