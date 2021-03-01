@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'tweets#index'
   resources :users, only: %i[index show]
-  resources :follows, only: %i[new create update destroy index]
+  resources :follows, only: %i[new create index]
   resources :tweets do
     member do
       put 'like', to: 'tweets#like'
