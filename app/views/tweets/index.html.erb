@@ -1,0 +1,92 @@
+  <div class="d-flex  lol">
+    <div class=" bg_2 text-white p-2 width-18rem">
+      <div class="d-flex align-items-center justify-content-around ">
+      <img src="https://static.comicvine.com/uploads/original/11111/111113706/5508193-7637959662-40788.jpg" class="card-img-top rounded img5-5" alt="...">
+      <h5 class="card-title text-secondary text-uppercase font-waight-bold" ><%= current_user.name%></h5>
+      </div>
+      <div class=" d-flex align-items-baseline justify-content-around">
+        <div class="card-body">
+          <p class="text-secondary text-uppercase font-waight-bold"> Follows <p>
+          <p class="card-text text-white"><%= current_user.follows.count%></p>
+        </div>
+        <div class="mr-5">
+          <p class="text-secondary text-uppercase font-waight-bold"> Follower<p>
+          <p> <% lol = Follow.all.where(friend_id: current_user.id).count%>
+              <%= lol %>
+          </p>
+        </div>
+      </div>
+        <div class="">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item bg_2 text-primary"><%= link_to 'Home', root_path, class: "text-secondary text-uppercase font-weight-bold" %></li>
+              <li class="list-group-item bg_2 text-primary"><%= link_to 'User page', user_path(current_user), class: "text-secondary text-uppercase font-weight-bold"  %></li>
+              <li class="list-group-item bg_2 text-primary"><%= link_to "logout", destroy_user_session_path, method: :delete, class: "text-secondary text-uppercase font-weight-bold"  %></li>
+              <li class="list-group-item bg_2 text-primary"><%= link_to "delete", user_registration_path, method: :delete, data: { confirm: "You sure?" }, class: "text-secondary text-uppercase font-weight-bold"%></li>
+
+            </ul>
+
+        </div>
+    </div>
+
+
+    <div class="d-flex flex-column flex-fill">
+      <nav class="navbar navbar-expand-lg navbar-dark bg_1 m-0">
+        <a class="navbar-brand" href="/"><img src="https://i.pinimg.com/736x/0a/c8/e8/0ac8e8ab266076f9d654e8387ba5a993.jpg" class="rounded-circle img2_5" alt="...">
+ </a>
+      </nav>
+  <div class="d-flex justify-content-between bg-secondary" style="height: 99vh;">
+    <div class="d-flex flex-column w-100  bg-light">
+    <div class="d-md-none d-xl-block d-lg-none">
+    </div>
+  <div  class="div1">
+<p id="notice"><%= notice %></p>
+
+  <div class="ml-5 mr-5 bg-white border px-4 my-5 rounded">
+    <%= render 'form', tweet: current_user.tweets.build %>
+  </div>
+<div class="text-wrap ml-5 mr-5 div2" >
+
+  <tbody class="p-5">
+    <% @tweets.includes(:user).each do |tweet| %>
+    <div class="mb-2 bg-white border rounded p-2">
+      <tr class="tweet border rounded bg-white p-5 mb-5">
+        <td><p class="font-weight-bold m-0"><%= tweet.user.name %></p></td>
+        <div class="d-flex">
+          <td class="flex-wrap width-20rem "> <p class="w-75 text-break"><%= tweet.tweet %></p> <p class="mx-5"> <%= tweet.get_likes.size %></p> </td>
+          <td> 
+            <%= if_voter(tweet) %>
+            <br>
+        </td>
+        </div>
+      </tr>
+    </div>
+    <% end %>
+  </tbody>
+
+</div>
+</div>
+<br>
+
+</div>
+    <div class="border-left border-dark p-5 bg_2 text-white width-18rem">
+        <h5>Who to follow</h5>
+          <% list = Array.new%>
+          <% lol = current_user.follows%>
+          <% lol.each do |lols| %>
+            <% list.push(lols.friend_id) %>
+          <% end %>
+          <% @user.each do |tweet| %>
+            <tr>
+              <%= if_list(tweet, list) %>
+              <br>
+            </tr>
+          <% end %>
+
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+</html>

@@ -1,0 +1,121 @@
+  <div class="d-flex flex-wrap lol">
+    <div class=" bg_2  text-white p-2 width-18rem">
+      <div class="d-flex align-items-center justify-content-around ">
+      <img src="https://static.comicvine.com/uploads/original/11111/111113706/5508193-7637959662-40788.jpg" class="card-img-top rounded img5-5" alt="...">
+      <h5 class="card-title text-secondary text-uppercase font-waight-bold"><%= current_user.name%></h5>
+      </div>
+      <div class=" d-flex align-items-baseline justify-content-around">
+        <div class="card-body">
+          <p class="text-secondary text-uppercase font-waight-bold"> Follows <p>
+          <p class=""><%= current_user.follows.count%></p>
+        </div>
+        <div class="mr-5">
+          <p class="text-secondary text-uppercase font-waight-bold"> Follower<p>
+          <p class=""> <% lol = Follow.all.where(friend_id: current_user.id).count%>
+              <%= lol %>
+          </p>
+        </div>
+      </div>
+        <div class="">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item bg_2 text-primary"><%= link_to 'Home', root_path, class: "text-secondary text-uppercase font-waight-bold" %></li>
+              <li class="list-group-item bg_2 text-primary"><%= link_to 'User page', user_path(current_user), class: "text-secondary text-uppercase font-waight-bold"  %></li>
+              <li class="list-group-item bg_2 text-primary"><%= link_to "logout", destroy_user_session_path, method: :delete, class: "text-secondary text-uppercase font-waight-bold"  %></li>
+              <li class="list-group-item bg_2 text-primary"><%= link_to "delete", user_registration_path, method: :delete, data: { confirm: "You sure?" }, class: "text-secondary text-uppercase font-waight-bold"%></li>
+
+            </ul>
+
+        </div>
+    </div>
+
+
+    <div class="d-flex flex-column flex-fill">
+      <nav class="navbar navbar-expand-lg navbar-dark bg_1 m-0">
+        <a class="navbar-brand" href="/"><img src="https://i.pinimg.com/736x/0a/c8/e8/0ac8e8ab266076f9d654e8387ba5a993.jpg" class="rounded-circle img2_5" alt="...">
+ </a>
+      </nav>
+  <div class="d-flex justify-content-between bg-secondary" style="height: 99vh;">
+    <div class="d-flex flex-column w-100  bg-light">
+    <div class="d-md-none d-xl-block d-lg-none">
+      <img src="https://news-cdn.softpedia.com/images/news2/did-you-know-the-windows-xp-wallpaper-was-so-expensive-fedex-refused-to-ship-it-520483-2.jpg" class="height20" alt="...">
+    </div>
+  <div  class="div1">
+<p id="notice"><%= notice %></p>
+
+<h1 class="ml-5" >Tweets</h1>
+  <div class="ml-5">
+    <%= %>
+  </div>
+
+  <div>
+    <% User.find( params[:id]).tweets.each do |tweet|%>
+    <div class="mb-2 bg-white border rounded p-2 mx-5">
+      <tr class="tweet border rounded bg-white p-5 mb-5">
+        <div class="d-flex mx-5">
+          <td class="flex-wrap width-20rem "> <p class="w-75 text-break"><%= tweet.tweet %></p> </td>
+        </div>
+      </tr>
+    </div>
+  <% end %>
+
+  </div>
+</div>
+<br>
+
+</div>
+    <div class="border-left border-dark p-5 bg_2 text-white width-18rem">
+        <div class="d-flex align-items-center justify-content-around">
+          <%= render 'form2' %>
+       </div>
+
+          <% list = Array.new%>
+          <% lol = current_user.follows %>
+          <% lol.each do |lols| %>
+            <% list.push(lols.friend_id) %>
+          <% end %>
+
+          <div class="d-flex align-items-center justify-content-around ">
+            <img src="https://static.comicvine.com/uploads/original/11111/111113706/5508193-7637959662-40788.jpg" class="card-img-top rounded-circle img5-5" alt="...">
+          </div>
+
+          <div class="d-flex flex-column align-items-center ">
+            <h2><%= User.find(params[:id]).name %></h2>
+            <p><%= User.find(params[:id]).email %></p>
+          </div>
+          <div class="d-flex justify-content-around">
+            <div class="">
+              <p>
+                <%= Follow.all.where(friend_id: params[:id]).count %>
+              </p>
+              <p>
+                Followers
+              </p>
+            </div>
+
+            <div class="">
+              <p>
+                <%= Follow.all.where(user_id: params[:id]).count %>
+              </p>
+              <p>
+                Follow
+              </p>
+            </div>
+
+            <div class="">
+              <p>
+                <%= current_user.tweets.count %>
+              </p>
+              <p>
+                tweets
+              </p>
+            </div>
+          </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+</html>
